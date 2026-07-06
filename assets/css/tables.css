@@ -1,0 +1,248 @@
+/**
+ * Tables Design
+ * 
+ * Formatting for management index lists, controls, headers, status columns
+ * 
+ * @package Clairvoyant_Core
+ * @since 1.0.0
+ */
+
+.cv-table-container {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    margin-top: 24px;
+    overflow-x: auto;
+}
+
+.cv-table-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.cv-table-filters {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.cv-table-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cv-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 8px;
+}
+
+.cv-table th {
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--border);
+    background-color: var(--background);
+    font-size: var(--font-size-sm);
+}
+
+.cv-table th:first-child {
+    border-top-left-radius: var(--radius-sm);
+    width: 40px;
+}
+
+.cv-table th:last-child {
+    border-top-right-radius: var(--radius-sm);
+}
+
+.cv-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--font-size-sm);
+    color: var(--text-dark);
+    vertical-align: middle;
+}
+
+.cv-table tbody tr {
+    transition: var(--transition);
+}
+
+.cv-table tbody tr:hover {
+    background-color: rgba(200, 169, 106, 0.02);
+}
+
+.cv-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Checkbox alignment */
+.cv-checkbox-col {
+    text-align: center !important;
+}
+
+/* Status Badges */
+.cv-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    line-height: 1;
+}
+
+.cv-badge-publish, .cv-badge-published {
+    background-color: var(--success-light);
+    color: var(--success);
+}
+
+.cv-badge-draft {
+    background-color: var(--warning-light);
+    color: var(--warning);
+}
+
+.cv-badge-trash {
+    background-color: var(--danger-light);
+    color: var(--danger);
+}
+
+/* Thumbnails */
+.cv-table-thumbnail {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    background-color: var(--background);
+}
+
+/* Table action buttons */
+.cv-table-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.cv-table-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    border: 1px solid var(--border);
+    background-color: var(--white);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.cv-table-action-btn:hover {
+    background-color: var(--background);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.cv-table-action-btn.edit-btn:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.cv-table-action-btn.delete-btn:hover {
+    color: var(--danger);
+    border-color: var(--danger);
+    background-color: var(--danger-light);
+}
+
+/* Bulk operation items drawer */
+.cv-bulk-actions-bar {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: var(--shadow-lg);
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 9999;
+}
+
+.cv-bulk-actions-bar.active {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.cv-bulk-selected-count {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+}
+
+/* Pagination container */
+.cv-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.cv-page-info {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.cv-page-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+    transition: var(--transition);
+}
+
+.cv-page-link:hover:not(.disabled) {
+    background-color: var(--background);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.cv-page-link.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--background);
+}
+
+/* Star rating styles in tables */
+.cv-table .cv-star-rating {
+    display: flex;
+    gap: 2px;
+}
+.cv-table .cv-star {
+    font-size: 16px;
+    color: #ccc;
+}
+.cv-table .cv-star.filled {
+    color: var(--primary-color);
+}

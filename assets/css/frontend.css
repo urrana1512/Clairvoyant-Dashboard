@@ -1,0 +1,928 @@
+/**
+ * Frontend Styling
+ * 
+ * Beautiful public-facing widgets layout (Rashi grids, Horoscope detail grids, Testimonial slides)
+ * 
+ * @package Clairvoyant_Core
+ * @since 1.0.0
+ */
+
+/* Fonts enqueuing inside theme handles Poppins and Cormorant */
+
+.cv-rashi-fal-section,
+.cv-horo-section,
+.cv-testimonials-section,
+.cv-transit-section {
+    font-family: 'Poppins', -apple-system, sans-serif;
+    background-color: #F8F5F0;
+    padding: 60px 20px;
+    color: #1b1b1b;
+}
+
+.cv-rashi-fal-container,
+.cv-horo-container,
+.cv-testimonials-container,
+.cv-transit-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Heading style */
+.cv-rashi-fal-heading,
+.cv-horo-heading,
+.cv-testimonials-heading {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.cv-rashi-fal-heading h2,
+.cv-horo-heading h2,
+.cv-testimonials-heading h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 38px;
+    color: #1b1b1b;
+    margin: 0 0 12px 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.cv-rashi-fal-heading p,
+.cv-horo-heading p,
+.cv-testimonials-heading p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+/* Desktop Grid: 3 rows x 4 columns */
+.cv-rashi-fal-grid,
+.cv-horo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.cv-rashi-fal-card,
+.cv-horo-card {
+    background: #ffffff;
+    border: 1px solid #E8DFD0;
+    border-radius: 14px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(27,27,27,0.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 380px;
+}
+
+.cv-rashi-fal-card.cv-clickable-card:hover,
+.cv-horo-card.cv-clickable-horo-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(200, 169, 106, 0.12);
+    border-color: #C8A96A;
+    cursor: pointer;
+}
+
+.cv-rashi-fal-card.cv-disabled-card,
+.cv-horo-card.cv-disabled-card {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.cv-rashi-fal-icon,
+.cv-horo-icon {
+    font-size: 40px;
+    color: #C8A96A;
+    margin-bottom: 12px;
+}
+
+.cv-rashi-fal-name,
+.cv-horo-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: #1b1b1b;
+}
+
+.cv-rashi-fal-today-date {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+.cv-rashi-fal-prediction,
+.cv-horo-prediction {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+    flex-grow: 1;
+}
+
+/* Ratings */
+.cv-rashi-fal-rating,
+.cv-horo-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #E8DFD0;
+    padding-top: 16px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #999;
+}
+
+.cv-rashi-fal-rating .stars,
+.cv-horo-rating .stars {
+    display: flex;
+    gap: 2px;
+}
+
+.cv-rashi-fal-rating .stars span,
+.cv-horo-rating .stars span {
+    font-size: 16px;
+    color: #E8DFD0;
+}
+
+.cv-rashi-fal-rating .stars span.filled,
+.cv-horo-rating .stars span.filled {
+    color: #C8A96A;
+}
+
+.cv-rashi-fal-card-btn,
+.cv-horo-card-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #C8A96A;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: 1px solid #C8A96A;
+}
+
+.cv-rashi-fal-card-btn:hover,
+.cv-horo-card-btn:hover {
+    background-color: #B89050;
+    border-color: #B89050;
+    color: #ffffff;
+}
+
+/* Mobile Symbol Grid (Default hidden on desktop) */
+.cv-rashi-fal-mobile-grid {
+    display: none;
+}
+
+/* Mobile responsive media breakpoints */
+@media (max-width: 767px) {
+    .cv-rashi-fal-grid,
+    .cv-horo-grid {
+        display: none; /* Hide full detail card grid on mobile */
+    }
+    
+    .cv-rashi-fal-mobile-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+    
+    .cv-rashi-fal-mobile-card {
+        background: #ffffff;
+        border: 1px solid #E8DFD0;
+        border-radius: 12px;
+        padding: 20px 10px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    .cv-rashi-fal-mobile-card.cv-clickable-card:active,
+    .cv-rashi-fal-mobile-card.cv-clickable-card:hover {
+        border-color: #C8A96A;
+        background-color: rgba(200, 169, 106, 0.05);
+    }
+    
+    .cv-rashi-fal-mobile-icon {
+        font-size: 32px;
+        color: #C8A96A;
+        margin-bottom: 6px;
+    }
+    
+    .cv-rashi-fal-mobile-name {
+        font-size: 13px;
+        font-weight: 600;
+        display: block;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .cv-rashi-fal-grid,
+    .cv-horo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ----------------------------------------------------
+ * PUBLIC MODAL LIGHTBOX
+ * ---------------------------------------------------- */
+/* Scroll Lock Class */
+html.cv-modal-open,
+body.cv-modal-open {
+    overflow: hidden !important;
+}
+
+.cv-modal-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(27,27,27,0.5);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999999;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    overflow: hidden; /* Lock background scroll */
+}
+
+.cv-modal-lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.cv-lightbox-content {
+    background: #ffffff;
+    border: 1px solid #E8DFD0;
+    border-radius: 18px;
+    padding: 32px;
+    width: 100%;
+    max-width: 680px;
+    position: relative;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+    transform: translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-height: 85vh !important; /* Keep centered without stretching to edges */
+    overflow-y: auto !important; /* Scroll info inside modal only */
+    box-sizing: border-box;
+}
+
+.cv-modal-lightbox.active .cv-lightbox-content {
+    transform: translateY(0);
+}
+
+.cv-lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.cv-lightbox-close:hover {
+    color: #C8A96A;
+}
+
+.cv-lightbox-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #E8DFD0;
+    padding-bottom: 16px;
+}
+
+.cv-lightbox-icon {
+    font-size: 48px;
+    color: #C8A96A;
+}
+
+.cv-lightbox-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.cv-lightbox-date {
+    font-size: 14px;
+    color: #999;
+}
+
+.cv-lightbox-prediction {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 32px;
+}
+
+/* Meta Data Grid inside lightbox */
+.cv-lightbox-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    background-color: #F8F5F0;
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    border: 1px solid #E8DFD0;
+}
+
+.cv-lightbox-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+}
+
+.cv-lightbox-meta-item strong {
+    color: #999;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+.cv-lightbox-meta-item span {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.cv-lightbox-meta-item .color-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+.cv-lightbox-meta-item .stars {
+    color: #C8A96A;
+    font-size: 14px;
+}
+
+/* Life areas cards inside modal */
+.cv-lightbox-life-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.cv-lightbox-areas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.cv-lightbox-area-card {
+    background: #ffffff;
+    border: 1px solid #E8DFD0;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.cv-lightbox-area-card h5 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1b1b1b;
+}
+
+.cv-lightbox-area-card p {
+    margin: 0;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+}
+
+@media (max-width: 580px) {
+    .cv-lightbox-meta-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .cv-lightbox-areas-grid {
+        grid-template-columns: 1fr;
+    }
+    .cv-lightbox-content {
+        padding: 24px 16px;
+    }
+}
+
+/* ----------------------------------------------------
+ * TRANSIT LIST STYLING
+ * ---------------------------------------------------- */
+.cv-transit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.cv-transit-card {
+    background: #fff;
+    border: 1px solid #E8DFD0;
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 4px 12px rgba(27,27,27,0.02);
+}
+
+.cv-transit-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #999;
+    font-weight: 600;
+}
+
+.cv-transit-planet {
+    color: #C8A96A;
+    text-transform: uppercase;
+}
+
+.cv-transit-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.cv-transit-prediction {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.cv-transit-impact,
+.cv-transit-remedies {
+    border-top: 1px solid #E8DFD0;
+    padding-top: 16px;
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.cv-transit-impact strong,
+.cv-transit-remedies strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #1b1b1b;
+}
+
+.cv-transit-remedies .remedies-content {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ----------------------------------------------------
+ * TESTIMONIALS LAYOUT STYLING
+ * ---------------------------------------------------- */
+.cv-testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.cv-testimonial-card {
+    background: #fff;
+    border: 1px solid #E8DFD0;
+    border-radius: 14px;
+    padding: 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
+}
+
+.cv-testimonial-quote {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    font-size: 80px;
+    color: rgba(200, 169, 106, 0.08);
+    font-family: Georgia, serif;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.cv-testimonial-review {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.cv-testimonial-client {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.cv-testimonial-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #C8A96A;
+}
+
+.cv-testimonial-name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1b1b1b;
+}
+
+.cv-testimonial-meta {
+    display: block;
+    font-size: 12px;
+    color: #999;
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+
+.cv-testimonial-rating {
+    color: #C8A96A;
+    font-size: 12px;
+}
+
+@media (max-width: 900px) {
+    .cv-testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .cv-testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Carousel controls */
+.cv-testimonials-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 0 40px;
+}
+
+.cv-testimonials-carousel {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cv-testimonial-slide {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    padding: 0 12px;
+}
+
+.cv-carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 32px;
+}
+
+.cv-carousel-arrow {
+    background: #fff;
+    border: 1px solid #E8DFD0;
+    font-size: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.cv-carousel-arrow:hover {
+    border-color: #C8A96A;
+    color: #C8A96A;
+    box-shadow: 0 4px 12px rgba(200, 169, 106, 0.15);
+}
+
+.cv-carousel-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.cv-carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #E8DFD0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cv-carousel-dot.active {
+    background-color: #C8A96A;
+    transform: scale(1.2);
+}
+
+/* Infinity Testimonials Marquee Carousel Styles */
+.cv-testimonials-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 10px 0;
+}
+
+.cv-testimonials-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: cvTestimonialsMarquee 30s linear infinite;
+}
+
+.cv-testimonials-marquee-track:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+}
+
+.cv-testimonials-marquee-group {
+    display: flex;
+    align-items: stretch; /* Make all cards match the height of the tallest card */
+    gap: 24px;
+    padding-right: 24px; /* Matches gap for seamless looping transition */
+}
+
+.cv-testimonials-marquee-group .cv-testimonial-card {
+    width: 360px;
+    flex: 0 0 360px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@keyframes cvTestimonialsMarquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Horoscope Tabs Styling */
+.cv-horoscope-tabs-wrapper {
+    background: #ffffff;
+    border: 1px solid #E8DFD0;
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(27,27,27,0.02);
+    margin-bottom: 40px;
+}
+
+.cv-horoscope-tabs-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    border-bottom: 2px solid #E8DFD0;
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.cv-tab-button {
+    background: #F8F5F0;
+    border: 1px solid #E8DFD0;
+    border-radius: 30px;
+    padding: 10px 24px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cv-tab-button:hover {
+    color: #C8A96A;
+    border-color: #C8A96A;
+}
+
+.cv-tab-button.active {
+    background: #C8A96A;
+    border-color: #C8A96A;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(200, 169, 106, 0.2);
+}
+
+.cv-tab-content {
+    animation: cvFadeIn 0.3s ease;
+}
+
+@keyframes cvFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile responsive styles for Horoscopes */
+.cv-horo-mobile-grid {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .cv-horo-grid {
+        display: none !important;
+    }
+    
+    .cv-horo-mobile-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+    
+    .cv-horo-mobile-card {
+        background: #ffffff;
+        border: 1px solid #E8DFD0;
+        border-radius: 12px;
+        padding: 20px 10px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    .cv-horo-mobile-card.cv-clickable-horo-card {
+        cursor: pointer;
+    }
+    
+    .cv-horo-mobile-card.cv-clickable-horo-card:active,
+    .cv-horo-mobile-card.cv-clickable-horo-card:hover {
+        border-color: #C8A96A;
+        background-color: rgba(200, 169, 106, 0.05);
+    }
+    
+    .cv-horo-mobile-icon {
+        font-size: 32px;
+        color: #C8A96A;
+        margin-bottom: 6px;
+    }
+    
+    .cv-horo-mobile-name {
+        font-size: 13px;
+        font-weight: 600;
+        display: block;
+    }
+}
+
+/* Transit Grid and Background Image Cards Styling */
+.cv-transit-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 24px !important;
+    margin-top: 10px !important;
+}
+
+.cv-transit-card.cv-clickable-transit-card {
+    position: relative;
+    border-radius: 14px;
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #E8DFD0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(27,27,27,0.02);
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.cv-transit-card.cv-clickable-transit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 18, 24, 0.55); /* Dark background overlay for high text contrast */
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+.cv-transit-card.cv-clickable-transit-card:hover::before {
+    background: rgba(18, 18, 24, 0.65);
+}
+
+.cv-transit-card.cv-clickable-transit-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    border-color: #C8A96A;
+}
+
+.cv-transit-card-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.cv-transit-card-planet-icon {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #C8A96A;
+    font-weight: 600;
+}
+
+.cv-transit-card-title {
+    color: #ffffff;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.4;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.cv-transit-card-explore {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.cv-transit-card.cv-clickable-transit-card:hover .cv-transit-card-explore {
+    color: #C8A96A;
+    border-color: #C8A96A;
+}
+
+/* Responsive Grid layouts */
+@media (max-width: 991px) {
+    .cv-transit-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 580px) {
+    .cv-transit-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .cv-transit-card.cv-clickable-transit-card {
+        min-height: 220px;
+    }
+}
+
+/* Consultation Button Modal Styles */
+.cv-consultation-btn {
+    display: inline-block;
+    padding: 12px 36px;
+    background-color: #C8A96A;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    border: 1px solid #C8A96A;
+    box-shadow: 0 4px 12px rgba(200, 169, 106, 0.25);
+    cursor: pointer;
+}
+
+.cv-consultation-btn:hover {
+    background-color: #B89050;
+    border-color: #B89050;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(200, 169, 106, 0.35);
+}

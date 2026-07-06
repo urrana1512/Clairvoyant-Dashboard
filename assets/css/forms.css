@@ -1,0 +1,209 @@
+/**
+ * Forms Design
+ * 
+ * Elegant styles for input fields, editors, and selectors
+ * 
+ * @package Clairvoyant_Core
+ * @since 1.0.0
+ */
+
+.cv-form-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+
+.cv-form-panel {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.cv-form-panel-title {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.cv-form-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.cv-form-group {
+    margin-bottom: 24px;
+}
+
+.cv-form-label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-size: var(--font-size-sm);
+}
+
+.cv-form-input,
+.cv-form-textarea,
+.cv-form-select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-sans);
+    background-color: var(--white);
+    color: var(--text-dark);
+    transition: var(--transition);
+}
+
+.cv-form-input:focus,
+.cv-form-textarea:focus,
+.cv-form-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(200, 169, 106, 0.1);
+}
+
+.cv-form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Star rating input */
+.cv-rating-selector {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 4px;
+}
+
+.cv-rating-selector input {
+    display: none;
+}
+
+.cv-rating-selector label {
+    font-size: 28px;
+    color: #ccc;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.cv-rating-selector label:hover,
+.cv-rating-selector label:hover ~ label,
+.cv-rating-selector input:checked ~ label {
+    color: var(--primary-color);
+}
+
+/* Upload components */
+.cv-upload-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.cv-preview-image {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    object-fit: cover;
+    background-color: var(--background);
+}
+
+.cv-upload-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Buttons */
+.cv-btn-container {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.cv-form-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 1px solid var(--primary-color);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    line-height: 1;
+}
+
+.cv-form-button:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-1px);
+    color: var(--white);
+}
+
+.cv-form-button.secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.cv-form-button.secondary:hover {
+    background-color: rgba(200, 169, 106, 0.05);
+    color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.cv-form-button.danger {
+    background-color: var(--danger);
+    border-color: var(--danger);
+    color: var(--white);
+}
+
+.cv-form-button.danger:hover {
+    background-color: #d32f2f;
+    border-color: #d32f2f;
+}
+
+/* Error validation fields styling */
+.cv-field-error {
+    border-color: var(--danger) !important;
+}
+
+.cv-error-message {
+    color: var(--danger);
+    font-size: var(--font-size-xs);
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+/* TinyMCE customization */
+.wp-editor-wrap {
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-md) !important;
+    overflow: hidden;
+}
+.wp-editor-tools {
+    border-bottom: 1px solid var(--border) !important;
+    background-color: var(--background) !important;
+}
+.quicktags-toolbar {
+    border-bottom: 1px solid var(--border) !important;
+}
+.wp-editor-area {
+    border: 0 !important;
+}
