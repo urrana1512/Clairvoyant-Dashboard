@@ -146,8 +146,8 @@ $consultation_btn_text = cv_get_setting('consultation_btn_text', 'Book Consultat
 
 <!-- Lightbox Modal container -->
 <div class="cv-modal-lightbox" id="cv-rashi-lightbox">
+    <button class="cv-lightbox-close" id="cv-lightbox-close-btn">&times;</button>
     <div class="cv-lightbox-content">
-        <button class="cv-lightbox-close" id="cv-lightbox-close-btn">&times;</button>
         <div class="cv-lightbox-header">
             <span class="cv-lightbox-icon" id="cv-lightbox-icon">♈</span>
             <div>

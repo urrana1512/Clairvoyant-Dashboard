@@ -13,6 +13,10 @@
         display: block;
     }
 
+    .cv-user-badge {
+        display: none !important;
+    }
+
     .cv-layout {
         position: relative;
     }
@@ -182,5 +186,12 @@
 @media (min-width: 1025px) {
     .cv-stats-grid {
         grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Extra small mobile screens: hide logo text to leave space for image & logout button */
+@media (max-width: 480px) {
+    .cv-logo-text {
+        display: none !important;
     }
 }

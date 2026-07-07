@@ -320,8 +320,8 @@ if ($active_tab === 'weekly') {
 
 <!-- Shared Horoscope Detail Lightbox -->
 <div class="cv-modal-lightbox" id="cv-horo-lightbox">
+    <button class="cv-lightbox-close" id="cv-horo-lightbox-close-btn">&times;</button>
     <div class="cv-lightbox-content">
-        <button class="cv-lightbox-close" id="cv-horo-lightbox-close-btn">&times;</button>
         <div class="cv-lightbox-header">
             <span class="cv-lightbox-icon" id="cv-horo-lightbox-icon">🔮</span>
             <div>
@@ -386,8 +386,8 @@ if ($active_tab === 'weekly') {
 
 <!-- Shared Transit Detail Lightbox -->
 <div class="cv-modal-lightbox" id="cv-transit-lightbox">
+    <button class="cv-lightbox-close" id="cv-transit-lightbox-close-btn">&times;</button>
     <div class="cv-lightbox-content">
-        <button class="cv-lightbox-close" id="cv-transit-lightbox-close-btn">&times;</button>
         <div class="cv-lightbox-header">
             <span class="cv-lightbox-icon">🪐</span>
             <div>

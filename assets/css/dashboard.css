@@ -100,6 +100,13 @@
     color: var(--primary-color);
 }
 
+.cv-header-logo {
+    max-height: 40px;
+    width: auto;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+}
+
 .cv-logo-text {
     font-family: var(--font-serif);
     font-size: var(--font-size-xl);

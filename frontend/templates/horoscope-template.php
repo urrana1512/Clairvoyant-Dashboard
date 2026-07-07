@@ -243,8 +243,8 @@ if ($type === 'transit') {
 <!-- Shared Horoscope Detail Lightbox -->
 <?php if ($type === 'daily' || $type === 'weekly') : ?>
 <div class="cv-modal-lightbox" id="cv-horo-lightbox">
+    <button class="cv-lightbox-close" id="cv-horo-lightbox-close-btn">&times;</button>
     <div class="cv-lightbox-content">
-        <button class="cv-lightbox-close" id="cv-horo-lightbox-close-btn">&times;</button>
         <div class="cv-lightbox-header">
             <span class="cv-lightbox-icon" id="cv-horo-lightbox-icon">🔮</span>
             <div>

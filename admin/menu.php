@@ -65,13 +65,18 @@ class Clairvoyant_Admin_Menu {
     public static function render_layout_wrapper($content_callback) {
         $current_page = isset($_GET['page']) ? sanitize_key($_GET['page']) : 'clairvoyant-dashboard';
         $user = wp_get_current_user();
+        $logo_url = cv_get_setting('logo_url', '');
         ?>
         <div class="cv-dashboard-wrapper">
             <!-- Header Bar -->
             <header class="cv-header-bar">
                 <div class="cv-logo-area">
                     <button class="cv-menu-toggle" id="cv-menu-toggle">☰</button>
-                    <span class="cv-logo-icon">✨</span>
+                    <?php if (!empty($logo_url)) : ?>
+                        <img src="<?php echo esc_url($logo_url); ?>" class="cv-header-logo" alt="Logo">
+                    <?php else : ?>
+                        <span class="cv-logo-icon">✨</span>
+                    <?php endif; ?>
                     <span class="cv-logo-text">Clairvoyant Core</span>
                 </div>
                 <div class="cv-header-right">

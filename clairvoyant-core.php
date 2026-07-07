@@ -3,7 +3,7 @@
  * Plugin Name: Clairvoyant Core
  * Plugin URI: https://yoursite.com
  * Description: Complete astrology dashboard for WordPress
- * Version: 1.0.0
+ * Version: 1.1.1
  * Author: Your Name
  * Author URI: https://yoursite.com
  * License: GPL-2.0+

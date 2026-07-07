@@ -226,9 +226,20 @@ jQuery(document).ready(function($) {
         wrapper.find('.cv-tab-button').removeClass('active');
         btn.addClass('active');
 
+        // Update Active Title and Description dynamically
+        const title = btn.attr('data-title');
+        const desc = btn.attr('data-desc');
+        wrapper.find('#cv-horo-active-title').text(title);
+        wrapper.find('#cv-horo-active-desc').text(desc);
+
         // Toggle Active Content
         wrapper.find('.cv-tab-content').removeClass('active').hide();
         wrapper.find(`.cv-tab-content[data-tab="${tab}"]`).addClass('active').fadeIn(200);
+
+        // Re-initialize transit pagination if transit tab is selected
+        if (tab === 'transit') {
+            initTransitPagination();
+        }
     });
 
     // ----------------------------------------------------
@@ -260,5 +271,66 @@ jQuery(document).ready(function($) {
         // Open
         modal.addClass('active');
         $('html, body').addClass('cv-modal-open');
+    });
+
+    // ----------------------------------------------------
+    // TRANSIT CARD PAGINATION (MOBILE ONLY)
+    // ----------------------------------------------------
+    function initTransitPagination() {
+        $('.cv-transit-grid, .cv-transit-list').each(function() {
+            const container = $(this);
+            const cards = container.children('.cv-transit-card');
+            
+            // Clean up any existing pagination wrapper first
+            container.next('.cv-transit-pagination').remove();
+            
+            if (window.innerWidth < 768) {
+                if (cards.length > 2) {
+                    const totalPages = Math.ceil(cards.length / 2);
+                    let paginationHtml = '<div class="cv-transit-pagination">';
+                    for (let i = 1; i <= totalPages; i++) {
+                        paginationHtml += `<span class="cv-transit-page-dot ${i === 1 ? 'active' : ''}" data-page="${i}"></span>`;
+                    }
+                    paginationHtml += '</div>';
+                    container.after(paginationHtml);
+                    
+                    // Show current page cards
+                    function showPage(page) {
+                        const start = (page - 1) * 2;
+                        const end = page * 2;
+                        cards.hide();
+                        cards.slice(start, end).fadeIn(200);
+                        
+                        const pagination = container.next('.cv-transit-pagination');
+                        pagination.find('.cv-transit-page-dot').removeClass('active');
+                        pagination.find(`.cv-transit-page-dot[data-page="${page}"]`).addClass('active');
+                    }
+                    
+                    showPage(1);
+                    
+                    // Add dot click interaction
+                    container.next('.cv-transit-pagination').on('click', '.cv-transit-page-dot', function() {
+                        const page = parseInt($(this).attr('data-page'));
+                        showPage(page);
+                    });
+                } else {
+                    cards.show();
+                }
+            } else {
+                cards.show();
+            }
+        });
+    }
+
+    // Run pagination on load
+    initTransitPagination();
+
+    // Run pagination on resize with basic debounce
+    let resizeTimer;
+    $(window).on('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            initTransitPagination();
+        }, 150);
     });
 });

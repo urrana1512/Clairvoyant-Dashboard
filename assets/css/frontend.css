@@ -284,24 +284,37 @@ body.cv-modal-open {
 }
 
 .cv-lightbox-close {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
+    top: 24px;
+    right: 24px;
+    font-size: 36px;
+    color: #ffffff !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     border: none;
-    font-size: 32px;
-    color: #999;
     cursor: pointer;
+    z-index: 99999999;
     line-height: 1;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    padding: 0;
+    transition: all 0.3s ease;
 }
 
 .cv-lightbox-close:hover {
-    color: #C8A96A;
+    background: rgba(0, 0, 0, 0.6) !important;
+    color: #C8A96A !important;
 }
 
 .cv-lightbox-header {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
     gap: 16px;
     margin-bottom: 24px;
     border-bottom: 1px solid #E8DFD0;
@@ -330,6 +343,7 @@ body.cv-modal-open {
     color: #444;
     line-height: 1.8;
     margin-bottom: 32px;
+    text-align: justify;
 }
 
 /* Meta Data Grid inside lightbox */
@@ -347,6 +361,8 @@ body.cv-modal-open {
 .cv-lightbox-meta-item {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 4px;
     font-size: 13px;
 }
@@ -382,6 +398,7 @@ body.cv-modal-open {
     margin-top: 0;
     margin-bottom: 16px;
     font-weight: 700;
+    text-align: center;
 }
 
 .cv-lightbox-areas-grid {
@@ -403,6 +420,7 @@ body.cv-modal-open {
     font-size: 14px;
     font-weight: 600;
     color: #1b1b1b;
+    text-align: center;
 }
 
 .cv-lightbox-area-card p {
@@ -410,6 +428,7 @@ body.cv-modal-open {
     font-size: 13px;
     color: #666;
     line-height: 1.6;
+    text-align: justify;
 }
 
 @media (max-width: 580px) {
@@ -691,12 +710,20 @@ body.cv-modal-open {
 
 /* Horoscope Tabs Styling */
 .cv-horoscope-tabs-wrapper {
-    background: #ffffff;
-    border: 1px solid #E8DFD0;
-    border-radius: 18px;
-    padding: 24px;
-    box-shadow: 0 4px 20px rgba(27,27,27,0.02);
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
     margin-bottom: 40px;
+}
+
+.cv-horoscope-tabs-wrapper .cv-horo-section,
+.cv-horoscope-tabs-wrapper .cv-transit-section {
+    background-color: transparent !important;
+    background: transparent !important;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
 }
 
 .cv-horoscope-tabs-nav {
@@ -728,10 +755,10 @@ body.cv-modal-open {
 }
 
 .cv-tab-button.active {
-    background: #C8A96A;
-    border-color: #C8A96A;
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgba(200, 169, 106, 0.2);
+    background: #C8A96A !important;
+    border-color: #C8A96A !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(200, 169, 106, 0.2) !important;
 }
 
 .cv-tab-content {
@@ -816,6 +843,7 @@ body.cv-modal-open {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    color: #ffffff !important;
 }
 
 .cv-transit-card.cv-clickable-transit-card::before {
@@ -855,12 +883,12 @@ body.cv-modal-open {
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #C8A96A;
+    color: #C8A96A !important;
     font-weight: 600;
 }
 
 .cv-transit-card-title {
-    color: #ffffff;
+    color: #ffffff !important;
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 20px;
     font-weight: 700;
@@ -871,7 +899,7 @@ body.cv-modal-open {
 
 .cv-transit-card-explore {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.7) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding-bottom: 2px;
     transition: all 0.3s ease;
@@ -882,8 +910,8 @@ body.cv-modal-open {
 }
 
 .cv-transit-card.cv-clickable-transit-card:hover .cv-transit-card-explore {
-    color: #C8A96A;
-    border-color: #C8A96A;
+    color: #C8A96A !important;
+    border-color: #C8A96A !important;
 }
 
 /* Responsive Grid layouts */
@@ -925,4 +953,36 @@ body.cv-modal-open {
     color: #ffffff !important;
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(200, 169, 106, 0.35);
+}
+
+/* Close button mobile styling */
+@media (max-width: 767px) {
+    .cv-lightbox-close {
+        top: 15px;
+        right: 15px;
+    }
+}
+
+/* Transit Card Mobile Pagination Styling */
+.cv-transit-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+    width: 100%;
+}
+
+.cv-transit-page-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #E8DFD0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cv-transit-page-dot.active {
+    background-color: #C8A96A;
+    transform: scale(1.2);
 }
