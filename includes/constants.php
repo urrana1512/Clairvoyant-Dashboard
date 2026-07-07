@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 
 // Plugin Version
 if (!defined('CLAIRVOYANT_VERSION')) {
-    define('CLAIRVOYANT_VERSION', '1.1.1');
+    define('CLAIRVOYANT_VERSION', '1.1.2');
 }
 
 // Plugin Directory Path

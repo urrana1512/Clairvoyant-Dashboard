@@ -285,33 +285,56 @@ jQuery(document).ready(function($) {
             container.next('.cv-transit-pagination').remove();
             
             if (window.innerWidth < 768) {
-                if (cards.length > 2) {
-                    const totalPages = Math.ceil(cards.length / 2);
+                if (cards.length > 1) {
+                    const totalPages = cards.length;
                     let paginationHtml = '<div class="cv-transit-pagination">';
+                    
+                    // Prev Button
+                    paginationHtml += '<span class="cv-transit-page-btn prev" data-action="prev">&lsaquo;</span>';
+                    
+                    // Page numbers
                     for (let i = 1; i <= totalPages; i++) {
-                        paginationHtml += `<span class="cv-transit-page-dot ${i === 1 ? 'active' : ''}" data-page="${i}"></span>`;
+                        paginationHtml += `<span class="cv-transit-page-btn page-num ${i === 1 ? 'active' : ''}" data-page="${i}">${i}</span>`;
                     }
+                    
+                    // Next Button
+                    paginationHtml += '<span class="cv-transit-page-btn next" data-action="next">&rsaquo;</span>';
                     paginationHtml += '</div>';
+                    
                     container.after(paginationHtml);
                     
-                    // Show current page cards
+                    let currentPage = 1;
+                    
                     function showPage(page) {
-                        const start = (page - 1) * 2;
-                        const end = page * 2;
+                        currentPage = page;
                         cards.hide();
-                        cards.slice(start, end).fadeIn(200);
+                        cards.eq(page - 1).fadeIn(200);
                         
                         const pagination = container.next('.cv-transit-pagination');
-                        pagination.find('.cv-transit-page-dot').removeClass('active');
-                        pagination.find(`.cv-transit-page-dot[data-page="${page}"]`).addClass('active');
+                        pagination.find('.cv-transit-page-btn.page-num').removeClass('active');
+                        pagination.find(`.cv-transit-page-btn.page-num[data-page="${page}"]`).addClass('active');
+                        
+                        // Handle prev/next disabled state
+                        pagination.find('.cv-transit-page-btn.prev').toggleClass('disabled', page === 1);
+                        pagination.find('.cv-transit-page-btn.next').toggleClass('disabled', page === totalPages);
                     }
                     
                     showPage(1);
                     
-                    // Add dot click interaction
-                    container.next('.cv-transit-pagination').on('click', '.cv-transit-page-dot', function() {
-                        const page = parseInt($(this).attr('data-page'));
-                        showPage(page);
+                    // Page buttons click action
+                    container.next('.cv-transit-pagination').on('click', '.cv-transit-page-btn', function() {
+                        const btn = $(this);
+                        if (btn.hasClass('disabled')) return;
+                        
+                        const action = btn.attr('data-action');
+                        if (action === 'prev') {
+                            if (currentPage > 1) showPage(currentPage - 1);
+                        } else if (action === 'next') {
+                            if (currentPage < totalPages) showPage(currentPage + 1);
+                        } else {
+                            const page = parseInt(btn.attr('data-page'));
+                            showPage(page);
+                        }
                     });
                 } else {
                     cards.show();
