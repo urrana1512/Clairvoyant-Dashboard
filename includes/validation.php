@@ -239,3 +239,44 @@ function cv_validate_testimonial($data) {
         'errors' => $errors
     );
 }
+
+/**
+ * Validate 24-48 Hours Prediction data
+ * 
+ * @param array $data Input form data
+ * @return array
+ */
+function cv_validate_prediction_24_48($data) {
+    $errors = array();
+
+    if (empty($data['date']) || !strtotime($data['date'])) {
+        $errors['date'] = __('Please provide a valid date.', 'clairvoyant-core');
+    }
+
+    if (empty($data['element']) || !in_array($data['element'], array('fire', 'earth', 'air', 'water'))) {
+        $errors['element'] = __('Please select a valid element.', 'clairvoyant-core');
+    }
+
+    if (empty($data['prediction']) || mb_strlen(strip_tags($data['prediction'])) < 50) {
+        $errors['prediction'] = __('Prediction text is required and must be at least 50 characters long.', 'clairvoyant-core');
+    }
+
+    $text_fields_100 = array('suryoday', 'suryast');
+    foreach ($text_fields_100 as $field) {
+        if (isset($data[$field]) && mb_strlen($data[$field]) > 100) {
+            $errors[$field] = sprintf(__('%s cannot exceed 100 characters.', 'clairvoyant-core'), ucfirst($field));
+        }
+    }
+
+    $text_fields_255 = array('good_time', 'hindu_muhurat', 'rahu_kaal');
+    foreach ($text_fields_255 as $field) {
+        if (isset($data[$field]) && mb_strlen($data[$field]) > 255) {
+            $errors[$field] = sprintf(__('%s cannot exceed 255 characters.', 'clairvoyant-core'), ucfirst(str_replace('_', ' ', $field)));
+        }
+    }
+
+    return array(
+        'valid'  => empty($errors),
+        'errors' => $errors
+    );
+}

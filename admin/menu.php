@@ -148,6 +148,19 @@ class Clairvoyant_Admin_Menu {
                                 <li class="cv-submenu-item <?php echo $current_page === 'cv-horoscope-transit-manage' ? 'active' : ''; ?>">
                                     <a href="<?php echo esc_url(admin_url('admin.php?page=cv-horoscope-transit-manage')); ?>" class="cv-submenu-link" style="padding-left: 28px;">Manage</a>
                                 </li>
+                        <!-- 24-48 Hrs Prediction -->
+                        <li class="cv-menu-item">
+                            <span class="cv-menu-link <?php echo strpos($current_page, 'cv-prediction-24h') !== false ? 'parent-active' : ''; ?>">
+                                <span class="cv-menu-icon">⏳</span>
+                                <span>24-48 Hrs Prediction</span>
+                            </span>
+                            <ul class="cv-submenu">
+                                <li class="cv-submenu-item <?php echo $current_page === 'cv-prediction-24h-add' ? 'active' : ''; ?>">
+                                    <a href="<?php echo esc_url(admin_url('admin.php?page=cv-prediction-24h-add')); ?>" class="cv-submenu-link">Add New</a>
+                                </li>
+                                <li class="cv-submenu-item <?php echo $current_page === 'cv-prediction-24h-manage' ? 'active' : ''; ?>">
+                                    <a href="<?php echo esc_url(admin_url('admin.php?page=cv-prediction-24h-manage')); ?>" class="cv-submenu-link">Manage</a>
+                                </li>
                             </ul>
                         </li>
 

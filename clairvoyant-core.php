@@ -79,6 +79,7 @@ class Clairvoyant_Core {
         require_once plugin_dir_path(__FILE__) . 'modules/horoscope/class-horoscope.php';
         require_once plugin_dir_path(__FILE__) . 'modules/testimonials/class-testimonials.php';
         require_once plugin_dir_path(__FILE__) . 'modules/settings/class-settings.php';
+        require_once plugin_dir_path(__FILE__) . 'modules/prediction-24h/class-prediction-24h.php';
 
         // Frontend Loader
         require_once plugin_dir_path(__FILE__) . 'frontend/class-frontend.php';
@@ -122,6 +123,7 @@ class Clairvoyant_Core {
             CV_Horoscope::get_instance();
             CV_Testimonials::get_instance();
             CV_Settings::get_instance();
+            CV_Prediction_24h::get_instance();
         }
 
         // Initialize Frontend

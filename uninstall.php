@@ -23,6 +23,7 @@ $tables = array(
     $wpdb->prefix . 'cv_transit_horoscope',
     $wpdb->prefix . 'cv_testimonials',
     $wpdb->prefix . 'cv_settings',
+    $wpdb->prefix . 'cv_prediction_24_48',
 );
 
 // Disable foreign key checks to avoid deletion blocks

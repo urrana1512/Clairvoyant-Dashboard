@@ -251,7 +251,7 @@ body.cv-modal-open {
     align-items: center;
     justify-content: center;
     z-index: 9999999;
-    padding: 20px;
+    padding: 40px;
     box-sizing: border-box;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -267,7 +267,7 @@ body.cv-modal-open {
     background: #ffffff;
     border: 1px solid #E8DFD0;
     border-radius: 18px;
-    padding: 32px;
+    padding: 40px 48px;
     width: 100%;
     max-width: 680px;
     position: relative;
@@ -428,7 +428,19 @@ body.cv-modal-open {
     line-height: 1.6;
 }
 
+@media (max-width: 768px) {
+    .cv-modal-lightbox {
+        padding: 24px;
+    }
+    .cv-lightbox-content {
+        padding: 32px 36px;
+    }
+}
+
 @media (max-width: 580px) {
+    .cv-modal-lightbox {
+        padding: 16px;
+    }
     .cv-lightbox-meta-grid {
         grid-template-columns: 1fr;
         gap: 12px;
@@ -437,7 +449,7 @@ body.cv-modal-open {
         grid-template-columns: 1fr;
     }
     .cv-lightbox-content {
-        padding: 24px 16px;
+        padding: 28px 24px;
     }
 }
 
@@ -1005,3 +1017,342 @@ body.cv-modal-open {
     cursor: not-allowed;
     background: #f5f5f5;
 }
+
+/* ==========================================================================
+   24-48 Hours Prediction Elements Styling
+   ========================================================================== */
+
+.cv-prediction-24h-wrapper {
+    font-family: 'Poppins', -apple-system, sans-serif;
+    background-color: #F8F5F0;
+    padding: 80px 20px;
+    color: #1b1b1b;
+}
+
+.cv-prediction-24h-heading {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.cv-prediction-24h-heading h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 42px;
+    color: #1b1b1b;
+    margin: 0 0 14px 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.cv-prediction-24h-heading p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+.cv-prediction-24h-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+/* Card Styling */
+.cv-prediction-card {
+    background: #ffffff;
+    border: 1px solid #E8DFD0;
+    border-radius: 20px;
+    padding: 38px 28px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(27,27,27,0.015);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 420px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cv-prediction-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 20px;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+}
+
+.cv-prediction-card.cv-clickable-element-card {
+    cursor: pointer;
+}
+
+/* Element Badges */
+.cv-element-badge {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 32px;
+    color: #ffffff;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cv-element-card-fire .cv-element-badge {
+    background: linear-gradient(135deg, #FF4E50, #F9D423);
+    box-shadow: 0 8px 20px rgba(255, 78, 80, 0.25);
+}
+
+.cv-element-card-earth .cv-element-badge {
+    background: linear-gradient(135deg, #11998E, #38EF7D);
+    box-shadow: 0 8px 20px rgba(17, 153, 142, 0.25);
+}
+
+.cv-element-card-air .cv-element-badge {
+    background: linear-gradient(135deg, #00C6FF, #0072FF);
+    box-shadow: 0 8px 20px rgba(0, 198, 255, 0.25);
+}
+
+.cv-element-card-water .cv-element-badge {
+    background: linear-gradient(135deg, #6A11CB, #2575FC);
+    box-shadow: 0 8px 20px rgba(106, 17, 203, 0.25);
+}
+
+.cv-element-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: #1b1b1b;
+}
+
+.cv-element-signs {
+    font-size: 11px;
+    font-weight: 700;
+    color: #9c8b74;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.cv-element-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+    margin: 0 0 28px 0;
+    flex-grow: 1;
+}
+
+/* Button Styling */
+.cv-element-card-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    margin-top: auto;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.cv-element-card-fire .cv-element-card-btn {
+    background: linear-gradient(135deg, #FF4E50, #F9D423);
+}
+.cv-element-card-earth .cv-element-card-btn {
+    background: linear-gradient(135deg, #11998E, #38EF7D);
+}
+.cv-element-card-air .cv-element-card-btn {
+    background: linear-gradient(135deg, #00C6FF, #0072FF);
+}
+.cv-element-card-water .cv-element-card-btn {
+    background: linear-gradient(135deg, #6A11CB, #2575FC);
+}
+
+.cv-element-card-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+/* Card Hover Interactions */
+.cv-prediction-card.cv-clickable-element-card:hover {
+    transform: translateY(-8px);
+}
+
+.cv-prediction-card.cv-clickable-element-card:hover .cv-element-badge {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.cv-prediction-card.cv-clickable-element-card.cv-element-card-fire:hover {
+    box-shadow: 0 20px 40px rgba(255, 78, 80, 0.15);
+    border-color: rgba(255, 78, 80, 0.4);
+}
+.cv-prediction-card.cv-clickable-element-card.cv-element-card-earth:hover {
+    box-shadow: 0 20px 40px rgba(17, 153, 142, 0.15);
+    border-color: rgba(17, 153, 142, 0.4);
+}
+.cv-prediction-card.cv-clickable-element-card.cv-element-card-air:hover {
+    box-shadow: 0 20px 40px rgba(0, 198, 255, 0.15);
+    border-color: rgba(0, 198, 255, 0.4);
+}
+.cv-prediction-card.cv-clickable-element-card.cv-element-card-water:hover {
+    box-shadow: 0 20px 40px rgba(106, 17, 203, 0.15);
+    border-color: rgba(106, 17, 203, 0.4);
+}
+
+.cv-prediction-card.cv-disabled-card {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+.cv-prediction-card.cv-disabled-card .cv-element-card-btn {
+    background: #cccccc !important;
+    pointer-events: none;
+}
+
+/* Lightbox Enhancements for Elements */
+.cv-prediction-lightbox-signs {
+    border-left: 3px solid #C8A96A;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 991px) {
+    .cv-prediction-24h-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+@media (max-width: 575px) {
+    .cv-prediction-24h-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .cv-prediction-24h-heading h2 {
+        font-size: 34px;
+    }
+}
+
+/* ==========================================================================
+   Panchang & Auspicious Times Banner Styling
+   ========================================================================== */
+.cv-panchang-banner {
+    max-width: 1200px;
+    margin: 0 auto 50px auto;
+    background: #ffffff;
+    border: 1px solid #E8DFD0;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(27,27,27,0.015);
+    box-sizing: border-box;
+}
+
+.cv-panchang-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1b1b1b;
+    margin: 0 0 20px 0;
+    border-bottom: 1px solid #E8DFD0;
+    padding-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cv-panchang-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.cv-panchang-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #F8F5F0;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(200, 169, 106, 0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.cv-panchang-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+    border-color: rgba(200, 169, 106, 0.25);
+}
+
+.cv-panchang-item.rahu-kaal {
+    border-color: rgba(217, 83, 79, 0.15);
+}
+
+.cv-panchang-item.rahu-kaal:hover {
+    border-color: rgba(217, 83, 79, 0.35);
+}
+
+.cv-panchang-icon {
+    font-size: 28px;
+}
+
+.cv-panchang-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.cv-panchang-info strong {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #9c8b74;
+    letter-spacing: 0.8px;
+    font-weight: 700;
+}
+
+.cv-panchang-info span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1b1b1b;
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+/* Responsive Overrides for Panchang Grid */
+@media (max-width: 1200px) {
+    .cv-panchang-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .cv-panchang-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    .cv-panchang-banner {
+        padding: 24px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cv-panchang-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+

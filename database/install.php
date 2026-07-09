@@ -151,6 +151,31 @@ function cv_install_database() {
         UNIQUE KEY unique_key (setting_key)
     ) $charset_collate;";
 
+    // Table 7: wp_cv_prediction_24_48
+    $table_prediction_24_48 = $wpdb->prefix . 'cv_prediction_24_48';
+    $sql_prediction_24_48 = "CREATE TABLE $table_prediction_24_48 (
+        id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+        date date NOT NULL,
+        element varchar(20) NOT NULL,
+        prediction longtext NOT NULL,
+        suryoday varchar(100) DEFAULT '',
+        suryast varchar(100) DEFAULT '',
+        good_time varchar(255) DEFAULT '',
+        hindu_muhurat varchar(255) DEFAULT '',
+        rahu_kaal varchar(255) DEFAULT '',
+        status varchar(20) DEFAULT 'draft',
+        scheduled_at datetime DEFAULT NULL,
+        created_at datetime DEFAULT CURRENT_TIMESTAMP,
+        updated_at datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        created_by bigint(20) unsigned DEFAULT NULL,
+        updated_by bigint(20) unsigned DEFAULT NULL,
+        PRIMARY KEY (id),
+        UNIQUE KEY unique_date_element (date, element),
+        KEY idx_element (element),
+        KEY idx_date (date),
+        KEY idx_status (status)
+    ) $charset_collate;";
+
     // Run dbDelta for structural updates
     dbDelta($sql_daily_rashi);
     dbDelta($sql_daily_horoscope);
@@ -158,6 +183,7 @@ function cv_install_database() {
     dbDelta($sql_transit_horoscope);
     dbDelta($sql_testimonials);
     dbDelta($sql_settings);
+    dbDelta($sql_prediction_24_48);
 
     // Apply foreign keys directly using raw SQL since dbDelta doesn't support them fully
     // Adding FOREIGN KEY constraint if they do not exist
@@ -169,5 +195,15 @@ function cv_install_database() {
     $has_fk_updated = $wpdb->get_results("SELECT CONSTRAINT_NAME FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = '$table_daily_rashi' AND COLUMN_NAME = 'updated_by' AND REFERENCED_TABLE_NAME = '$users_table'");
     if (empty($has_fk_updated)) {
         $wpdb->query("ALTER TABLE $table_daily_rashi ADD CONSTRAINT fk_cv_daily_rashi_updated_by FOREIGN KEY (updated_by) REFERENCES $users_table (ID) ON DELETE SET NULL");
+    }
+
+    $has_fk_created_24_48 = $wpdb->get_results("SELECT CONSTRAINT_NAME FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = '$table_prediction_24_48' AND COLUMN_NAME = 'created_by' AND REFERENCED_TABLE_NAME = '$users_table'");
+    if (empty($has_fk_created_24_48)) {
+        $wpdb->query("ALTER TABLE $table_prediction_24_48 ADD CONSTRAINT fk_cv_prediction_24_48_created_by FOREIGN KEY (created_by) REFERENCES $users_table (ID) ON DELETE SET NULL");
+    }
+
+    $has_fk_updated_24_48 = $wpdb->get_results("SELECT CONSTRAINT_NAME FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = '$table_prediction_24_48' AND COLUMN_NAME = 'updated_by' AND REFERENCED_TABLE_NAME = '$users_table'");
+    if (empty($has_fk_updated_24_48)) {
+        $wpdb->query("ALTER TABLE $table_prediction_24_48 ADD CONSTRAINT fk_cv_prediction_24_48_updated_by FOREIGN KEY (updated_by) REFERENCES $users_table (ID) ON DELETE SET NULL");
     }
 }

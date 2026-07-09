@@ -236,4 +236,25 @@ function cv_clear_shortcode_transients() {
     }
 }
 
+/**
+ * Get all zodiac elements
+ * 
+ * @return array
+ */
+function cv_get_element_list() {
+    return defined('CV_ELEMENTS') ? CV_ELEMENTS : array();
+}
+
+/**
+ * Get specific zodiac element details
+ * 
+ * @param string $element Element slug
+ * @return array|false
+ */
+function cv_get_element_info($element) {
+    $elements = cv_get_element_list();
+    $element = strtolower($element);
+    return isset($elements[$element]) ? $elements[$element] : false;
+}
+
 

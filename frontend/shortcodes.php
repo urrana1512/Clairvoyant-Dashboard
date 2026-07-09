@@ -153,3 +153,26 @@ function cv_testimonials_shortcode($atts) {
     return $html;
 }
 add_shortcode('cv_testimonials', 'cv_testimonials_shortcode');
+
+/**
+ * Shortcode 6: [cv_prediction_24_48] (or [cv_prediction_24h])
+ */
+function cv_prediction_24h_shortcode($atts) {
+    $atts = shortcode_atts(array(
+        'date' => ''
+    ), $atts, 'cv_prediction_24_48');
+
+    $transient_key = 'cv_shortcode_prediction_24h_' . md5(json_encode($atts));
+    $html = get_transient($transient_key);
+
+    if (false === $html) {
+        ob_start();
+        require CLAIRVOYANT_PLUGIN_DIR . 'frontend/templates/prediction-24h-template.php';
+        $html = ob_get_clean();
+        set_transient($transient_key, $html, HOUR_IN_SECONDS);
+    }
+
+    return $html;
+}
+add_shortcode('cv_prediction_24_48', 'cv_prediction_24h_shortcode');
+add_shortcode('cv_prediction_24h', 'cv_prediction_24h_shortcode');

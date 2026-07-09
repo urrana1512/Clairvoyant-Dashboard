@@ -131,6 +131,34 @@ jQuery(document).ready(function($) {
         $('html, body').addClass('cv-modal-open');
     });
 
+    // Element Prediction Card Click Handler (Desktop and Mobile)
+    $('.cv-prediction-card.cv-clickable-element-card').on('click', function(e) {
+        e.preventDefault();
+        
+        const card = $(this);
+        const modal = $('#cv-prediction-lightbox');
+        
+        if (!modal.length) return;
+
+        // Retrieve properties
+        const name = card.attr('data-name');
+        const icon = card.attr('data-icon');
+        const date = card.attr('data-date');
+        const prediction = card.attr('data-prediction');
+        const signs = card.attr('data-signs');
+
+        // Populate details
+        modal.find('#cv-prediction-lightbox-title').text(name);
+        modal.find('#cv-prediction-lightbox-icon').text(icon);
+        modal.find('#cv-prediction-lightbox-date').text(date);
+        modal.find('#cv-prediction-lightbox-signs').text(signs);
+        modal.find('#cv-prediction-lightbox-text').html(prediction);
+
+        // Open
+        modal.addClass('active');
+        $('html, body').addClass('cv-modal-open');
+    });
+
     // Close lightbox modal buttons action
     $('.cv-modal-lightbox, .cv-lightbox-close').on('click', function(e) {
         if ($(e.target).hasClass('cv-modal-lightbox') || $(e.target).hasClass('cv-lightbox-close') || e.target.id.indexOf('close-btn') !== -1) {

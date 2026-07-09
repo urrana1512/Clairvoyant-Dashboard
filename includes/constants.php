@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 
 // Plugin Version
 if (!defined('CLAIRVOYANT_VERSION')) {
-    define('CLAIRVOYANT_VERSION', '1.1.2');
+    define('CLAIRVOYANT_VERSION', '1.2.1');
 }
 
 // Plugin Directory Path
@@ -42,5 +42,35 @@ if (!defined('CV_ZODIAC_SIGNS')) {
         'capricorn'   => array('name' => 'Capricorn', 'icon' => '♑', 'dates' => 'Dec 22 - Jan 19'),
         'aquarius'    => array('name' => 'Aquarius', 'icon' => '♒', 'dates' => 'Jan 20 - Feb 18'),
         'pisces'      => array('name' => 'Pisces', 'icon' => '♓', 'dates' => 'Feb 19 - Mar 20'),
+    ));
+}
+
+// Zodiac elements reference map
+if (!defined('CV_ELEMENTS')) {
+    define('CV_ELEMENTS', array(
+        'fire'  => array(
+            'name'  => 'Fire Signs',
+            'icon'  => '🔥',
+            'signs' => array('aries', 'leo', 'sagittarius'),
+            'label' => 'Fire Signs: ♈ Aries, ♌ Leo, ♐ Sagittarius'
+        ),
+        'earth' => array(
+            'name'  => 'Earth Signs',
+            'icon'  => '🌱',
+            'signs' => array('taurus', 'virgo', 'capricorn'),
+            'label' => 'Earth Signs: ♉ Taurus, ♍ Virgo, ♑ Capricorn'
+        ),
+        'air'   => array(
+            'name'  => 'Air Signs',
+            'icon'  => '💨',
+            'signs' => array('gemini', 'libra', 'aquarius'),
+            'label' => 'Air Signs: ♊ Gemini, ♎ Libra, ♒ Aquarius'
+        ),
+        'water' => array(
+            'name'  => 'Water Signs',
+            'icon'  => '💧',
+            'signs' => array('cancer', 'scorpio', 'pisces'),
+            'label' => 'Water Signs: ♋ Cancer, ♏ Scorpio, ♓ Pisces'
+        ),
     ));
 }

@@ -21,6 +21,7 @@ $table_daily_horo = $wpdb->prefix . 'cv_daily_horoscope';
 $table_weekly_horo = $wpdb->prefix . 'cv_weekly_horoscope';
 $table_transit_horo = $wpdb->prefix . 'cv_transit_horoscope';
 $table_testimonials = $wpdb->prefix . 'cv_testimonials';
+$table_prediction_24_48 = $wpdb->prefix . 'cv_prediction_24_48';
 
 // Fetch Statistics counts
 $total_rashi_pub = (int) $wpdb->get_var("SELECT COUNT(*) FROM $table_rashi WHERE status = 'publish'");
@@ -30,9 +31,24 @@ $today_horo_count = (int) $wpdb->get_var($wpdb->prepare(
 ));
 $total_testimonials = (int) $wpdb->get_var("SELECT COUNT(*) FROM $table_testimonials");
 $pending_testimonials = (int) $wpdb->get_var("SELECT COUNT(*) FROM $table_testimonials WHERE status = 'draft'");
+$total_prediction_24_48 = (int) $wpdb->get_var("SELECT COUNT(*) FROM $table_prediction_24_48 WHERE status = 'publish'");
 
 // Gather recent updates from all modules
 $recent_updates = array();
+
+// 24-48 Hrs Predictions
+$predictions_24_48 = $wpdb->get_results("SELECT id, element as name, date, status, updated_at FROM $table_prediction_24_48 ORDER BY updated_at DESC LIMIT 10", ARRAY_A);
+if ($predictions_24_48) {
+    foreach ($predictions_24_48 as $p) {
+        $recent_updates[] = array(
+            'type'       => '24-48 Hrs',
+            'title'      => sprintf('%s - %s', ucfirst($p['name']), cv_format_date($p['date'])),
+            'date'       => $p['updated_at'],
+            'status'     => $p['status'],
+            'edit_url'   => admin_url('admin.php?page=cv-prediction-24h-add&action=edit&id=' . $p['id'])
+        );
+    }
+}
 
 // Rashi
 $rashis = $wpdb->get_results("SELECT id, zodiac_sign as name, date, status, updated_at FROM $table_rashi ORDER BY updated_at DESC LIMIT 10", ARRAY_A);
@@ -147,6 +163,16 @@ $activities = get_option('cv_activity_log', array());
         <div class="cv-stats-trend info">For <?php echo esc_html(cv_format_date(current_time('Y-m-d'))); ?></div>
     </div>
 
+    <!-- Stat 2.5 (24-48h predictions) -->
+    <div class="cv-stats-card">
+        <div class="cv-stats-header">
+            <span class="cv-stats-title">Active 24-48h Predictions</span>
+            <span class="cv-stats-icon">⏳</span>
+        </div>
+        <div class="cv-stats-value"><?php echo esc_html($total_prediction_24_48); ?></div>
+        <div class="cv-stats-trend up">Published elements forecast</div>
+    </div>
+
     <!-- Stat 3 -->
     <div class="cv-stats-card">
         <div class="cv-stats-header">
@@ -223,6 +249,10 @@ $activities = get_option('cv_activity_log', array());
                 <a href="<?php echo esc_url(admin_url('admin.php?page=cv-horoscope-daily-add')); ?>" class="cv-action-btn">
                     <span>🔮</span>
                     <span>Add Horoscope</span>
+                </a>
+                <a href="<?php echo esc_url(admin_url('admin.php?page=cv-prediction-24h-add')); ?>" class="cv-action-btn">
+                    <span>⏳</span>
+                    <span>Add 24-48 Hrs</span>
                 </a>
                 <a href="<?php echo esc_url(admin_url('admin.php?page=cv-testimonials-add')); ?>" class="cv-action-btn">
                     <span>💬</span>
